@@ -1,22 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- Target .NET Framework 4.8 (common for BepInEx 5 mods) -->
+    <TargetFramework>net48</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Update HintPath values to match your own CloverPit install -->
+    <!-- BepInEx core -->
     <Reference Include="BepInEx">
-      <HintPath>..\..\CloverPit\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\CloverPit\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+
+    <!-- Harmony that ships with BepInEx (avoids NuGet issues) -->
+    <Reference Include="0Harmony">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\CloverPit\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+
+    <!-- Unity assemblies -->
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\CloverPit\CloverPit_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\CloverPit\CloverPit_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\CloverPit\CloverPit_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <!-- Harmony is a tiny library we’ll use to “hook” a payout method if the API doesn’t expose one -->
-  <ItemGroup>
-    <PackageReference Include="HarmonyLib" Version="2.2.2" />
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\CloverPit\CloverPit_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
