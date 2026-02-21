@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Update HintPath values to match your own CloverPit install -->
+    <Reference Include="BepInEx">
+      <HintPath>..\..\CloverPit\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\CloverPit\CloverPit_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Harmony is a tiny library we’ll use to “hook” a payout method if the API doesn’t expose one -->
+  <ItemGroup>
+    <PackageReference Include="HarmonyLib" Version="2.2.2" />
+  </ItemGroup>
+</Project>
