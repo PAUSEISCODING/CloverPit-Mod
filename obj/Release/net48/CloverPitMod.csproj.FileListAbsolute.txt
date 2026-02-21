@@ -1,0 +1,4 @@
+C:\Users\30243586\Documents\GitHub\CloverPit-Mod\obj\Release\net48\CloverPitMod.csproj.AssemblyReference.cache
+C:\Users\30243586\Documents\GitHub\CloverPit-Mod\obj\Release\net48\CloverPitMod.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\30243586\Documents\GitHub\CloverPit-Mod\obj\Release\net48\CloverPitMod.csproj.CoreCompileInputs.cache
+C:\Users\30243586\Documents\GitHub\CloverPit-Mod\obj\Release\net48\CloverPitMod.sourcelink.json

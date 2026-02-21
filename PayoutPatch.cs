@@ -1,8 +1,8 @@
+#nullable enable
 using HarmonyLib;
 
 namespace CallumMods.CloverPit
 {
-    // This class attaches to the plugin to install Harmony patches.
     public static class Patcher
     {
         private static Harmony? _harmony;
@@ -11,7 +11,10 @@ namespace CallumMods.CloverPit
         {
             if (_harmony != null) return;
             _harmony = new Harmony(Plugin.GUID);
-            _harmony.PatchAll(typeof(PayoutPatch));
+
+            // For now, do NOT patch anything automatically,
+            // because we haven't identified the real method yet.
+            // When ready, we'll call: _harmony.PatchAll(typeof(PayoutPatch));
         }
 
         public static void RemovePatches()
@@ -21,23 +24,18 @@ namespace CallumMods.CloverPit
         }
     }
 
-    // This is the actual patch.
-    // IMPORTANT:
-    // - You MUST replace "GameNamespace.PayoutCalculator" and "ComputeTotalPayout"
-    //   with the real class/method names from the game's code.
-    // - We'll talk about how to find those names just below.
-    [HarmonyPatch(typeof(GameNamespace.PayoutCalculator), "ComputeTotalPayout")]
+    // 🚧 TEMPORARILY DISABLED:
+    // When we discover the actual class/method, we'll uncomment and set:
+    // [HarmonyPatch(typeof(RealClassName), "RealMethodName")]
     public static class PayoutPatch
     {
-        // Postfix runs after the original method.
-        // If the original returns a float payout, __result is that number.
+        // This is the postfix we'll use once the attribute above is enabled.
+        // Adjust the signature (argument types) after we inspect the real method.
         public static void Postfix(ref float __result)
         {
             var mod = Plugin.Instance;
-            if (mod == null) return;
-            if (!mod.itemEnabled.Value) return;
+            if (mod == null || !mod.itemEnabled.Value) return;
 
-            // Apply the meme multiplier
             __result *= mod.memeMultiplier.Value;
         }
     }
